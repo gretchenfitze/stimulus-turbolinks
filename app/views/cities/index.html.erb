@@ -1,23 +1,40 @@
-<h1>List of cities</h1>
+<h2 class="title is-2">List of cities</h2>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th></th>
-  </tr>
-
-  <% @cities.each do |city| %>
+<div class="field">
+  <table class="table">
     <tr>
-      <td><%= city.title %></td>
-      <td><%= city.text %></td>
-      <td><%= link_to 'Show', city_path(city) %></td>
-      <td><%= link_to 'Edit', edit_city_path(city) %></td>
-      <td><%= link_to 'Remove', city_path(city),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
+      <th width="100">Name</th>
+      <th width="600">Description</th>
+      <th></th>
     </tr>
-  <% end %>
-</table>
 
-<%= link_to 'Add new city', new_city_path %>
+    <% @cities.each do |city| %>
+      <tr>
+        <td><%= city.title %></td>
+        <td><%= city.text %></td>
+        <td>
+          <div class="field has-addons">
+            <div class="control">
+              <%= link_to 'Show', city_path(city), class: 'button is-outlined is-link' %>
+            </div>
+            <div class="control">
+              <%= link_to 'Edit', edit_city_path(city), class: 'button is-outlined is-link' %>
+            </div>
+            <div class="control">
+              <%= link_to 'Remove', city_path(city),
+                    class: 'button is-outlined is-danger',
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } %>
+            </div>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<div class="field">
+  <div class="control">
+    <%= link_to 'Add new city', new_city_path, class: 'button is-primary' %>
+  </div>
+</div>

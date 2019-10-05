@@ -1,12 +1,14 @@
-<p>
-  <strong>Title:</strong>
-  <%= @city.title %>
-</p>
+<h2 class="title is-2"><%= @city.title %></h2>
 
-<p>
-  <strong>Description:</strong>
+<p class="content">
   <%= @city.text %>
 </p>
 
-<%= link_to 'Edit', edit_city_path(@city) %> |
-<%= link_to 'Back to cities list', cities_path %>
+<div class="field is-grouped">
+  <div class="control">
+    <%= link_to 'Edit', edit_city_path(@city), class: 'button is-primary' %>
+  </div>
+  <div class="control">
+    <%= link_to 'Back to cities list', cities_path, class: 'button is-text' %>
+  </div>
+</div>

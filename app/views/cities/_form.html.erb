@@ -1,15 +1,24 @@
 <%= form_with model: @city, local: true do |form| %>
-  <p>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </p>
+  <div class="field">
+    <%= form.label :title, 'Name', class: 'label' %>
+    <div class="control">
+      <%= form.text_field :title, class: 'input', :required => true %>
+    </div>
+  </div>
 
-  <p>
-    <%= form.label :text, 'Description' %><br>
-    <%= form.text_area :text %>
-  </p>
+  <div class="field">
+    <%= form.label :text, 'Description', class: 'label' %>
+    <div class="control">
+      <%= form.text_area :text, class: "textarea" %>
+    </div>
+  </div>
 
-  <p>
-    <%= form.submit %>
-  </p>
+  <div class="field is-grouped">
+    <div class="control">
+      <%= form.submit "Save", class: 'button is-primary' %>
+    </div>
+    <div class="control">
+      <%= link_to 'Back to cities list', cities_path, class: 'button is-text' %>
+    </div>
+  </div>
 <% end %>
