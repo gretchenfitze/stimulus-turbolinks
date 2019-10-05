@@ -7,6 +7,8 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css">
   </head>
 
   <body>
@@ -16,6 +18,10 @@
           <h1 class="title is-1">
             Cities
           </h1>
+          <div class="tags has-addons">
+            <span class="tag is-dark">Stimulus was connected times:</span>
+            <span class="tag" id="stimulus-times">0</span>
+          </div>
         </div>
       </div>
     </section>

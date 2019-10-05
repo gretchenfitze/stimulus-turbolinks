@@ -5,6 +5,8 @@
 
 require("@rails/ujs").start()
 // require("turbolinks").start()
+require("vue-init")
+require("controllers")
 require("@rails/activestorage").start()
 require("channels")
 

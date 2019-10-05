@@ -1,14 +1,25 @@
-<h2 class="title is-2"><%= @city.title %></h2>
+<div data-controller="city">
+  <h2 class="title is-2" data-target="city.name"><%= @city.title %></h2>
 
-<p class="content">
-  <%= @city.text %>
-</p>
+  <p class="content" data-controller="rate" data-readonly="true" data-value="<%= @city.rating %>"></p>
 
-<div class="field is-grouped">
-  <div class="control">
-    <%= link_to 'Edit', edit_city_path(@city), class: 'button is-primary' %>
-  </div>
-  <div class="control">
-    <%= link_to 'Back to cities list', cities_path, class: 'button is-text' %>
+  <p class="content">
+    <%= @city.text %>
+  </p>
+
+  <div class="field is-grouped">
+    <div class="control">
+      <%= link_to 'Edit', edit_city_path(@city), class: 'button is-primary' %>
+    </div>
+
+    <div class="control">
+      <button type="button" class='button is-danger' data-action='city#askToRemove'>Remove</button>
+
+      <%= link_to 'Remove', city_path(@city), method: :delete, hidden: true, id: 'remove-city-link', 'data-target': 'city.removeLink' %>
+    </div>
+
+    <div class="control">
+      <%= link_to 'Back to cities list', cities_path, class: 'button is-text' %>
+    </div>
   </div>
 </div>

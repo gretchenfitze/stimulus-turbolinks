@@ -1,24 +1,44 @@
-<%= form_with model: @city, local: true do |form| %>
-  <div class="field">
-    <%= form.label :title, 'Name', class: 'label' %>
-    <div class="control">
-      <%= form.text_field :title, class: 'input', :required => true %>
+<div data-controller="city">
+  <%= form_with model: @city, local: true do |form| %>
+    <div class="field">
+      <%= form.label :title, 'Name', class: 'label' %>
+      <div class="control">
+        <%= form.text_field :title, class: 'input', :required => true, 'data-target': 'city.name' %>
+      </div>
     </div>
-  </div>
 
-  <div class="field">
-    <%= form.label :text, 'Description', class: 'label' %>
-    <div class="control">
-      <%= form.text_area :text, class: "textarea" %>
+    <div class="field">
+      <%= form.label :text, 'Description', class: 'label' %>
+      <div class="control">
+        <%= form.text_area :text, class: "textarea" %>
+      </div>
     </div>
-  </div>
 
-  <div class="field is-grouped">
-    <div class="control">
-      <%= form.submit "Save", class: 'button is-primary' %>
+    <div class="field">
+      <%= form.label :rating, 'Rating', class: 'label' %>
+      <div class="control">
+        <div data-controller="rate" data-city="<%= @city.title %>">
+          <%= form.number_field :rating %>
+        </div>
+      </div>
     </div>
-    <div class="control">
-      <%= link_to 'Back to cities list', cities_path, class: 'button is-text' %>
+
+    <div class="field is-grouped">
+      <div class="control">
+        <%= form.submit "Save", class: 'button is-primary' %>
+      </div>
+
+      <% if @city.id %>
+        <div class="control">
+          <button type="button" class='button is-danger' data-action='city#askToRemove'>Remove</button>
+
+          <%= link_to 'Remove', city_path(@city), method: :delete, hidden: true, id: 'remove-city-link', 'data-target': 'city.removeLink' %>
+        </div>
+      <% end %>
+
+      <div class="control">
+        <%= link_to 'Back to cities list', cities_path, class: 'button is-text' %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

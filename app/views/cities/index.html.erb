@@ -5,13 +5,17 @@
     <tr>
       <th width="100">Name</th>
       <th width="600">Description</th>
+      <th>Your Rating</th>
       <th></th>
     </tr>
 
     <% @cities.each do |city| %>
-      <tr>
-        <td><%= city.title %></td>
+      <tr data-controller="city">
+        <td data-target="city.name"><%= city.title %></td>
         <td><%= city.text %></td>
+        <td>
+          <div data-controller="rate" data-readonly="true" data-value="<%= city.rating %>"></div>
+        </td>
         <td>
           <div class="field has-addons">
             <div class="control">
@@ -21,10 +25,9 @@
               <%= link_to 'Edit', edit_city_path(city), class: 'button is-outlined is-link' %>
             </div>
             <div class="control">
-              <%= link_to 'Remove', city_path(city),
-                    class: 'button is-outlined is-danger',
-                    method: :delete,
-                    data: { confirm: 'Are you sure?' } %>
+              <button type="button" class='button is-outlined is-danger' data-action='city#askToRemove'>Remove</button>
+
+              <%= link_to 'Remove', city_path(city), method: :delete, hidden: true, 'data-target': 'city.removeLink' %>
             </div>
           </div>
         </td>
