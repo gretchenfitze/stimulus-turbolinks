@@ -1,0 +1,23 @@
+<h1>List of cities</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th></th>
+  </tr>
+
+  <% @cities.each do |city| %>
+    <tr>
+      <td><%= city.title %></td>
+      <td><%= city.text %></td>
+      <td><%= link_to 'Show', city_path(city) %></td>
+      <td><%= link_to 'Edit', edit_city_path(city) %></td>
+      <td><%= link_to 'Remove', city_path(city),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Add new city', new_city_path %>

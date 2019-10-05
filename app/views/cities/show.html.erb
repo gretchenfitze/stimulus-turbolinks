@@ -1,0 +1,12 @@
+<p>
+  <strong>Title:</strong>
+  <%= @city.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @city.text %>
+</p>
+
+<%= link_to 'Edit', edit_city_path(@city) %> |
+<%= link_to 'Back to cities list', cities_path %>
