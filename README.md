@@ -1,24 +1,18 @@
-# README
+# Stimulus + Vue.js + Turbolinks test Rails app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To install app, clone the repository and run:
+```bash
+./bin/setup
+```
 
-Things you may want to cover:
+To create initial data:
+```bash
+rake db:seed
+```
 
-* Ruby version
+To start a server:
+```bash
+rails s
+```
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The app will be available in your browser on http://localhost:3000/
