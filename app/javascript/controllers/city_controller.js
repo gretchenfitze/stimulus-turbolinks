@@ -5,6 +5,11 @@ export default class extends Controller {
   static targets = [ 'name', 'removeLink' ];
 
   connect() {
+    // Skip action if we are currently showing Turbolinks preview
+    if (document.documentElement.hasAttribute('data-turbolinks-preview')) {
+      return;
+    }
+
     const element = document.getElementById('stimulus-times');
     let currentNumber = Number(element.innerText);
     element.innerHTML = currentNumber + 1;

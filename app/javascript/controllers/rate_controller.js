@@ -3,6 +3,11 @@ import Vue from 'vue';
 
 export default class extends Controller {
   connect() {
+    // Skip action if we are currently showing Turbolinks preview
+    if (document.documentElement.hasAttribute('data-turbolinks-preview')) {
+      return;
+    }
+    
     // We need a child element to mount container into it.
     // We cannot mount it into this.element,
     // 'cause this would trigger a `disconnect` callback
